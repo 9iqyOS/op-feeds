@@ -9,7 +9,8 @@ device=`basename $DEVPATH`
 skip=`block info | grep -vE '(f2fs|kernel|squashfs)' | sed 's/\(.*\): .*/\1/' | grep -q $device ; echo $?`
 path=$DEVPATH
 
-if [ $basename != "block" ] && [ -z "${device##sd*}" ] && [ $skip -eq 1 ]; then
+#if [ $basename != "block" ] && [ -z "${device##sd*}" ] && [ $skip -eq 1 ]; then
+if [ $basename != "block" ] && [ -z "${device##sd*}" ]; then
 	mntpnt=$device
 	case "$ACTION" in
 		add)
